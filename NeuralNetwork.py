@@ -32,8 +32,8 @@ class Dense(Layer):
         #print(self.weights.shape)
         #print(self.bias.shape)
         #print(self.input.shape)
-        self.weights -= np.multiply(weights_gradient, learning_rate)
-        self.bias -= np.multiply(output_gradient, learning_rate)
+        self.weights = self.weights - np.multiply(weights_gradient, learning_rate)
+        self.bias = self.bias - np.multiply(output_gradient, learning_rate)
         return input_error
 
 
@@ -74,9 +74,8 @@ class Network:
 
         for i in range(samples):
             output = input_data[:, i]
-        #    rows, columns = output.shape
-        #    if columns == None:
-        #        output= np.reshape(output, (output.shape[0], 1))
+            output= np.reshape(output, (output.shape[0], 1))
+            output = output.T
                  
             for layer in self.layers:
                 output = layer.forward_pass(output)
@@ -94,12 +93,11 @@ class Network:
             for j in range(samples):
                 # forward propogation
                 output = x_train[:, j]
-                #rows, columns = output.shape
-                #if columns == None:
-                ##    output= np.reshape(output, (output.shape[0], 1))
+                output = np.reshape(output, (output.shape[0], 1))
+                output = output.T
                 
                 for layer in self.layers:
-                    ouput = layer.forward_pass(output)
+                    output = layer.forward_pass(output)
 
                 # compute loss (for display purposes only)
                 error += self.loss(y_train[j], output)
