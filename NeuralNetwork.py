@@ -89,7 +89,7 @@ class Network:
     
         # loop over all the training samples
         for i in range(epochs):
-            error = 0
+            err = 0
             for j in range(samples):
                 # forward propogation
                 output = x_train[:, j]
@@ -100,7 +100,7 @@ class Network:
                     output = layer.forward_pass(output)
 
                 # compute loss (for display purposes only)
-                error += self.loss(y_train[j], output)
+                err += self.loss(y_train[j], output)
 
                 # backward propogation to update the parameters w and b
                 error = self.loss_deriv(y_train[j], output)
@@ -108,5 +108,5 @@ class Network:
                     error = layer.backward_pass(error, learning_rate)
                 
                 # calculate the average error on all of the samples
-                error /= samples
-                print(f'epoch {i + 1}{epochs}, error = {error}')
+                err /= samples
+                print(f'epoch {i + 1}/{epochs}, error = {err}')
