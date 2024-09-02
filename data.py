@@ -13,6 +13,7 @@ data_rows, data_columns = data.shape
 input_data = data[:,1:]
 input_data = input_data.T
 idata_rows, idata_columns = input_data.shape
+scale = np.max(input_data[5])
 for i in range(idata_rows):
     input_data[i] = input_data[i] / np.max(input_data[i])
 
