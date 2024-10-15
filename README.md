@@ -9,5 +9,5 @@ Comments throughout the jupyter notebooks describe the mathematics behind each f
 
 I have also tested the model on Yahoo stock prices between 2015 - 2021.
 stock_predictor.ipynb show how to use the model.
-The model returned the following output where the red plot is the preducted stock price and the blue plot is the actual stock price:
+The model returned the following output where the red plot is the predicted stock price and the blue plot is the actual stock price:
 ## ![Predicted vs Actual Output](https://github.com/user-attachments/assets/43de3822-2f52-4fbb-9457-f9cc403f494f)
